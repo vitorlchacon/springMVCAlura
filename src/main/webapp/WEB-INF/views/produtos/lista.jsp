@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,16 +8,20 @@
 <title>Spring Livraria</title>
 </head>
 <body>
-	<h1>Spring Livraria</h1>
+	<h1>Lista de Produtos</h1>
 	<table>
 		<tr>
-			<td>Java 8 Prático</td>
-			<td>Certificação OCJP</td>
+			<td>Título</td>
+			<td>Descrição</td>
+			<td>Páginas</td>
 		</tr>
-		<tr>
-			<td>TDD na Prática - Java</td>
-			<td>Google Anroid</td>
-		</tr>
+		<c:forEach items="${produtos}" var="produto">
+			<tr>
+				<td>${produto.titulo}</td>
+				<td>${produto.descricao}</td>
+				<td>${produto.paginas}</td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>
