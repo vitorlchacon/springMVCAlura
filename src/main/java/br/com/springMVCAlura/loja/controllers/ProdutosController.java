@@ -30,7 +30,7 @@ public class ProdutosController {
 	}
 	
 	@RequestMapping(value="/form")
-	public ModelAndView form(){
+	public ModelAndView form(Produto produto){
 		ModelAndView modelAndView = new ModelAndView("produtos/form");
 		modelAndView.addObject("tipos", TipoPreco.values());
 		
@@ -41,7 +41,7 @@ public class ProdutosController {
 	public ModelAndView grava(@Valid Produto produto, BindingResult result, RedirectAttributes attributes){
 		
 		if(result.hasErrors()){
-			return form();
+			return form(produto);
 		}
 		produtoDAO.gravar(produto);
 		attributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso!");
